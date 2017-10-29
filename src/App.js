@@ -17,13 +17,15 @@ class BooksApp extends React.Component {
 		})
   }
 
+  onShelfSelected (book, shelf) {
+    console.log(book, shelf)
+  }
+
   render() {
     return (
       <div className="app">
         <Route path='/search' render={() => (
-          <SearchPage
-            query={this.state.query}
-          />
+          <SearchPage />
         )}/>
 
         <Route exact path='/' render={() => (
