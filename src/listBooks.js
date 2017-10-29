@@ -15,7 +15,6 @@ class listBooks extends Component {
           read :'read'
         }
 
-        let retrievedBooks = books // eslint-disable-line no-unused-vars
         return (
             <div className="list-books">
             <div className="list-books-title">
@@ -24,22 +23,23 @@ class listBooks extends Component {
 
             <div className="list-books-content">
                 <div>
-
                   <BookShelf
                     shelf={shelfs.currentlyReading}
                     retrievedBooks={books}
+                    shelfTitle='Currently Reading'
                   />
 
                   <BookShelf
                     shelf={shelfs.wantToRead}
                     retrievedBooks={books}
+                    shelfTitle='Want to Read'
                   />
 
                   <BookShelf
                     shelf={shelfs.read}
                     retrievedBooks={books}
+                    shelfTitle='Read'
                   />
-
                 </div>
             </div>
 

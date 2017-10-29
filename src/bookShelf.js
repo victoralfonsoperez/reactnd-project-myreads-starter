@@ -5,7 +5,7 @@ class BookShelf extends Component {
     render () {
         return (
             <div className="bookshelf">
-            <h2 className="bookshelf-title">{this.props.shelf}</h2>
+            <h2 className="bookshelf-title">{this.props.shelfTitle}</h2>
             <div className="bookshelf-books">
               <ol className="books-grid">
                 {this.props.retrievedBooks.filter(book => book.shelf === this.props.shelf).map(book => (
