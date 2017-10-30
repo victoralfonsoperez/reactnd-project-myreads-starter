@@ -30,11 +30,14 @@ class BooksApp extends React.Component {
   }
 
   render() {
+    let currentBooksOnShelfs = this.state.books.map((book)=>({id: book.id, shelf: book.shelf}))
+
     return (
       <div className="app">
         <Route path='/search' render={() => (
           <SearchPage
             onUpdateSelection={this.onShelfChangeDone}
+            currentShelfBooksIds={currentBooksOnShelfs}
           />
         )}/>
 

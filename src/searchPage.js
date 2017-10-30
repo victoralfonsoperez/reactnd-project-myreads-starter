@@ -15,9 +15,11 @@ class SearchPage extends Component {
 	}
 
 	searchQuery (query) {
-		BooksAPI.search(query).then(
-			(books) => {
-      			this.setState({ books })
+		BooksAPI.search(query).then((books) => {
+				this.props.currentShelfBooksIds.forEach(currentBook => {
+					books.filter(book => book.id === currentBook.id).map(book => book.shelf = currentBook.shelf)
+				})
+				this.setState({ books })
 			}
 		).catch(() => {
   			this.setState({ books: [] })
@@ -52,7 +54,8 @@ class SearchPage extends Component {
 						<div>
 							{this.state.books && <BookShelf
 									retrievedBooks={this.state.books}
-                  onShelfChange={this.props.dummyFunc}
+									currentShelfBooks={this.props.currentShelfBooksIds}
+                  onShelfChange={this.props.onUpdateSelection}
 								/>
 							}
 						</div>
