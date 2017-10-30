@@ -24,38 +24,40 @@ class SearchPage extends Component {
 		})
 	}
 
+	onShelfDone = (book, shelf) => {
+		this.props.onShelfChange(book, shelf)
+	}
+
 	render() {
 		return (
 			<div className="search-books">
-	          <div className="search-books-bar">
-	            <Link className="close-search" to="/">
-	              Close
-	            </Link>
-	            <div className="search-books-input-wrapper">
-	              <input
-	                type="text"
-	                placeholder="Search by title or author"
-	                onChange={event => this.handleInputChange(event.target.value)}
-	              />
+				<div className="search-books-bar">
+					<Link className="close-search" to="/">
+						Close
+					</Link>
+					<div className="search-books-input-wrapper">
+						<input
+							type="text"
+							placeholder="Search by title or author"
+							onChange={event => this.handleInputChange(event.target.value)}
+						/>
 
-	            </div>
-	          </div>
-	          <div className="search-books-results">
-	            <ol className="books-grid"></ol>
-	          </div>
+					</div>
+				</div>
+				<div className="search-books-results">
+					<ol className="books-grid"></ol>
+				</div>
 
-	          <div className="list-books-content">
-		            <div>
-		            	{this.state.books && 
-	            			<BookShelf
-				                retrievedBooks={this.state.books}
-				              />
-		            		
-		            	}
-		            </div>
-		        </div>
-	        </div>
-
+				<div className="list-books-content">
+						<div>
+							{this.state.books && <BookShelf
+									retrievedBooks={this.state.books}
+                  onShelfChange={this.props.dummyFunc}
+								/>
+							}
+						</div>
+				</div>
+	    </div>
 		)
 	}
 }

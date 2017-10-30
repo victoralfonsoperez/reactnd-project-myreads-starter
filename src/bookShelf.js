@@ -2,13 +2,17 @@ import React, { Component } from 'react' // eslint-disable-line no-unused-vars
 import BookShelfChanger from './bookShelfChanger' // eslint-disable-line no-unused-vars
 
 class BookShelf extends Component {
+    onShelfDone = (book, shelf) => {
+        this.props.onShelfChange(book, shelf)
+    }
+
     render () {
         return (
             <div className="bookshelf">
             {this.props.shelf && <h2 className="bookshelf-title">{this.props.shelfTitle}</h2>}
             <div className="bookshelf-books">
               <ol className="books-grid">
-                {this.props.retrievedBooks && this.props.retrievedBooks.map(book => (
+                {!this.props.shelf && this.props.retrievedBooks && this.props.retrievedBooks.map(book => (
                   <li key={book.id}>
                     <div className="book">
                       <div className="book-top">
@@ -20,6 +24,9 @@ class BookShelf extends Component {
                         </div>
                         <BookShelfChanger
                             currentShelf={book.shelf || 'none'}
+                            book={book}
+                            bookTitle={book.title}
+                            onShelfUpdated={this.onShelfDone}
                         />
                       </div>
                       <div className="book-title">{book.title}</div>
@@ -28,7 +35,7 @@ class BookShelf extends Component {
                   </li>
                 ))}
 
-                {this.props.shelf && this.props.retrievedBooks.filter(book => book.shelf === this.props.shelf).map(book => (
+                {this.props.shelf && this.props.retrievedBooks && this.props.retrievedBooks.filter(book => book.shelf === this.props.shelf).map(book => (
                   <li key={book.id}>
                     <div className="book">
                       <div className="book-top">
@@ -40,6 +47,9 @@ class BookShelf extends Component {
                         </div>
                         <BookShelfChanger
                             currentShelf={book.shelf}
+                            book={book}
+                            bookTitle={book.title}
+                            onShelfUpdated={this.onShelfDone}
                         />
                       </div>
                       <div className="book-title">{book.title}</div>

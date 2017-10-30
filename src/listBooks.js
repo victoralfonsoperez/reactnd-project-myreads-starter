@@ -27,18 +27,21 @@ class listBooks extends Component {
                     shelf={shelfs.currentlyReading}
                     retrievedBooks={books}
                     shelfTitle='Currently Reading'
+                    onShelfChange={this.props.onUpdateSelection}
                   />
 
                   <BookShelf
                     shelf={shelfs.wantToRead}
                     retrievedBooks={books}
                     shelfTitle='Want to Read'
+                    onShelfChange={this.props.onUpdateSelection}
                   />
 
                   <BookShelf
                     shelf={shelfs.read}
                     retrievedBooks={books}
                     shelfTitle='Read'
+                    onShelfChange={this.props.onUpdateSelection}
                   />
                 </div>
             </div>
