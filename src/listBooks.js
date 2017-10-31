@@ -2,7 +2,7 @@ import React, { Component } from 'react' // eslint-disable-line no-unused-vars
 import { Link } from 'react-router-dom' // eslint-disable-line no-unused-vars
 import BookShelf from './bookShelf' // eslint-disable-line no-unused-vars
 
-class listBooks extends Component {
+class ListBooks extends Component {
     state = {
         query: ''
     }
@@ -56,4 +56,4 @@ class listBooks extends Component {
     }
 }
 
-export default listBooks
+export default ListBooks

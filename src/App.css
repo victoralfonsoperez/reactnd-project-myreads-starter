@@ -166,9 +166,20 @@ body, .app {
 .book-cover {
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   background: #eee;
+  background-image: url('http://via.placeholder.com/128x193?text=No%20Cover');
 }
 .book-cover-title {
   padding: 20px 10px 0;
   text-align: center;
   font-size: 0.8em;
+}
+
+/* error page */
+
+.no-match {
+  padding: 16px;
+}
+
+.return-to-myreads {
+  font-weight: bold;
 }

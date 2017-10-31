@@ -15,13 +15,17 @@ class BookShelf extends Component {
                 {!this.props.shelf && this.props.retrievedBooks && this.props.retrievedBooks.map(book => (
                   <li key={book.id}>
                     <div className="book">
+                      {
+                        //TO DO: Create a book component
+                      }
                       <div className="book-top">
                         <div className="book-cover" style={{
                             width: 128,
                             height: 193,
-                            backgroundImage: `url(${book.imageLinks && book.imageLinks.smallThumbnail})`
+                            backgroundImage: `url(${book.imageLinks && book.imageLinks.smallThumbnail}), url('http://via.placeholder.com/128x193?text=No%20Cover')`
                             }}>
                         </div>
+                        
                         <BookShelfChanger
                             currentShelf={book.shelf || 'none'}
                             book={book}
@@ -30,7 +34,7 @@ class BookShelf extends Component {
                         />
                       </div>
                       <div className="book-title">{book.title}</div>
-                      <div className="book-authors">{book.authors && book.authors[0]}</div>
+                      <div className="book-authors">{book.authors && book.authors.join(', ')}</div>
                     </div>
                   </li>
                 ))}
@@ -39,12 +43,14 @@ class BookShelf extends Component {
                   <li key={book.id}>
                     <div className="book">
                       <div className="book-top">
-                        <div className="book-cover" style={{
+                        {book.imageLinks && book.imageLinks.smallThumbnail &&
+                          <div className="book-cover" style={{
                             width: 128,
                             height: 193,
-                            backgroundImage: `url(${book.imageLinks.smallThumbnail})`
+                            backgroundImage: `url(${book.imageLinks && book.imageLinks.smallThumbnail})`
                             }}>
                         </div>
+                        }
                         <BookShelfChanger
                             currentShelf={book.shelf}
                             book={book}
@@ -53,7 +59,7 @@ class BookShelf extends Component {
                         />
                       </div>
                       <div className="book-title">{book.title}</div>
-                      <div className="book-authors">{book.authors[0]}</div>
+                      <div className="book-authors">{book.authors && book.authors.join(', ')}</div>
                     </div>
                   </li>
                 ))}

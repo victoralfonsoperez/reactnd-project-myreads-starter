@@ -15,7 +15,8 @@ class SearchPage extends Component {
 	}
 
 	searchQuery (query) {
-		BooksAPI.search(query).then((books) => {
+		if (query !== '') {
+			BooksAPI.search(query).then((books) => {
 				this.props.currentShelfBooksIds.forEach(currentBook => {
 					books.filter(book => book.id === currentBook.id).map(book => book.shelf = currentBook.shelf)
 				})
@@ -24,6 +25,7 @@ class SearchPage extends Component {
 		).catch(() => {
   			this.setState({ books: [] })
 		})
+		}
 	}
 
 	onShelfDone = (book, shelf) => {
@@ -51,14 +53,14 @@ class SearchPage extends Component {
 				</div>
 
 				<div className="list-books-content">
-						<div>
-							{this.state.books && <BookShelf
-									retrievedBooks={this.state.books}
-									currentShelfBooks={this.props.currentShelfBooksIds}
-                  onShelfChange={this.props.onUpdateSelection}
-								/>
-							}
-						</div>
+					<div>
+						{this.state.books && <BookShelf
+							retrievedBooks={this.state.books}
+							currentShelfBooks={this.props.currentShelfBooksIds}
+							onShelfChange={this.props.onUpdateSelection}
+						/>
+						}
+					</div>
 				</div>
 	    </div>
 		)

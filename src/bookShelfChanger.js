@@ -1,7 +1,7 @@
 import React, { Component } from 'react' // eslint-disable-line no-unused-vars
 import PropTypes from "prop-types"
 
-class bookShelfChanger extends Component {
+class BookShelfChanger extends Component {
   static propTypes = {
     book: PropTypes.object.isRequired,
   }
@@ -15,6 +15,9 @@ class bookShelfChanger extends Component {
 
         return (
             <div className="book-shelf-changer">
+              {
+                //TO DO: Convert this to a stateless component
+              }
               <select defaultValue={currentShelf} onChange={this.onShelfSelected}>
                 <option value="none" disabled>Move to...</option>
                 <option value="currentlyReading">Currently Reading</option>
@@ -27,4 +30,4 @@ class bookShelfChanger extends Component {
     }
 }
 
-export default bookShelfChanger
+export default BookShelfChanger
